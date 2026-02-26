@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MotherSkin Tattoos — Book Your Appointment</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --ink: #0a0804;
+    --blood: #8B1A1A;
+    --gold: #C9A84C;
+    --gold-light: #e8c96a;
+    --ash: #1a1714;
+    --smoke: #2d2926;
+    --parchment: #f0e8d8;
+    --pale: #d4c9b5;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background-color: var(--ink);
+    color: var(--parchment);
+    font-family: 'Cormorant Garamond', serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+    cursor: crosshair;
+  }
+
+  /* Background texture */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: 
+      radial-gradient(ellipse at 20% 20%, rgba(139,26,26,0.08) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 80%, rgba(201,168,76,0.05) 0%, transparent 60%),
+      url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .container {
+    position: relative;
+    z-index: 1;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+  }
+
+  /* HEADER */
+  header {
+    text-align: center;
+    padding: 60px 0 48px;
+    position: relative;
+  }
+
+  .header-ornament {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 20px;
+    animation: fadeDown 0.8s ease forwards;
+  }
+
+  .ornament-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+    max-width: 120px;
+  }
+
+  .ornament-diamond {
+    width: 8px;
+    height: 8px;
+    background: var(--gold);
+    transform: rotate(45deg);
+  }
+
+  .studio-name {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: clamp(28px, 6vw, 48px);
+    font-weight: 900;
+    letter-spacing: 0.05em;
+    line-height: 1.1;
+    background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 40%, #a07030 70%, var(--gold) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: fadeDown 0.9s ease forwards;
+    text-shadow: none;
+  }
+
+  .tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 17px;
+    color: var(--pale);
+    letter-spacing: 0.15em;
+    margin-top: 12px;
+    animation: fadeDown 1s ease forwards;
+    opacity: 0.8;
+  }
+
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 32px 0;
+    animation: fadeIn 1.2s ease forwards;
+  }
+
+  .divider-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(201,168,76,0.4), transparent);
+  }
+
+  .divider-text {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+
+  /* FORM CARD */
+  .form-card {
+    background: linear-gradient(145deg, var(--ash) 0%, var(--smoke) 100%);
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 2px;
+    padding: 48px 40px;
+    position: relative;
+    box-shadow: 0 0 80px rgba(0,0,0,0.6), inset 0 1px 0 rgba(201,168,76,0.1);
+    animation: fadeUp 1s ease 0.3s both;
+  }
+
+  .form-card::before, .form-card::after {
+    content: '';
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    border-color: var(--gold);
+    border-style: solid;
+    opacity: 0.6;
+  }
+
+  .form-card::before { top: -1px; left: -1px; border-width: 2px 0 0 2px; }
+  .form-card::after  { bottom: -1px; right: -1px; border-width: 0 2px 2px 0; }
+
+  .form-section-title {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .form-section-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(201,168,76,0.3);
+  }
+
+  .field-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 20px;
+  }
+
+  .field-group.single { grid-template-columns: 1fr; }
+
+  .field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  label {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+
+  label span.req { color: var(--blood); margin-left: 3px; }
+
+  input, select, textarea {
+    background: rgba(10,8,4,0.6);
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 2px;
+    color: var(--parchment);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    padding: 12px 16px;
+    transition: border-color 0.3s, box-shadow 0.3s, background 0.3s;
+    outline: none;
+    width: 100%;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+
+  /* Date input specific fixes */
+  input[type="date"] {
+    color-scheme: dark;
+    cursor: pointer;
+  }
+
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(0.7) sepia(1) saturate(2) hue-rotate(5deg);
+    cursor: pointer;
+    opacity: 0.7;
+    padding-left: 8px;
+  }
+
+  input[type="date"]::-webkit-datetime-edit { color: var(--parchment); }
+  input[type="date"]::-webkit-datetime-edit-fields-wrapper { color: var(--parchment); }
+  input[type="date"]::-webkit-datetime-edit-text { color: rgba(201,168,76,0.6); }
+  input[type="date"]::-webkit-datetime-edit-day-field,
+  input[type="date"]::-webkit-datetime-edit-month-field,
+  input[type="date"]::-webkit-datetime-edit-year-field {
+    color: var(--parchment);
+  }
+  input[type="date"]::-webkit-datetime-edit-day-field:focus,
+  input[type="date"]::-webkit-datetime-edit-month-field:focus,
+  input[type="date"]::-webkit-datetime-edit-year-field:focus {
+    background: rgba(201,168,76,0.15);
+    border-radius: 2px;
+    color: var(--gold-light);
+  }
+
+  input::placeholder, textarea::placeholder {
+    color: rgba(212,201,181,0.3);
+    font-style: italic;
+  }
+
+  input:focus, select:focus, textarea:focus {
+    border-color: rgba(201,168,76,0.7);
+    box-shadow: 0 0 0 3px rgba(201,168,76,0.07), 0 0 20px rgba(201,168,76,0.08);
+    background: rgba(10,8,4,0.8);
+  }
+
+  select {
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23C9A84C' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 40px;
+  }
+
+  select option {
+    background: var(--ash);
+    color: var(--parchment);
+  }
+
+  textarea { resize: vertical; min-height: 100px; }
+
+  /* Size selector */
+  .size-options {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+
+  .size-option input[type="radio"] { display: none; }
+
+  .size-option label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 14px 10px;
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 2px;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.3s;
+    gap: 6px;
+    background: rgba(10,8,4,0.4);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+  }
+
+  .size-option label .size-icon { font-size: 22px; line-height: 1; }
+  .size-option label .size-label { font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 0.2em; color: var(--gold); text-transform: uppercase; }
+  .size-option label .size-sub { font-family: 'Cormorant Garamond', serif; font-size: 12px; color: var(--pale); opacity: 0.6; font-style: italic; }
+
+  .size-option input:checked + label {
+    border-color: var(--gold);
+    background: rgba(201,168,76,0.1);
+    box-shadow: 0 0 20px rgba(201,168,76,0.1);
+  }
+
+  .size-option label:hover {
+    border-color: rgba(201,168,76,0.5);
+    background: rgba(201,168,76,0.05);
+  }
+
+  /* Image upload */
+  .upload-area {
+    border: 1px dashed rgba(201,168,76,0.3);
+    border-radius: 2px;
+    padding: 32px 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    background: rgba(10,8,4,0.3);
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .upload-area:hover, .upload-area:active {
+    border-color: rgba(201,168,76,0.6);
+    background: rgba(201,168,76,0.04);
+  }
+
+  .upload-icon { font-size: 28px; margin-bottom: 10px; opacity: 0.6; }
+
+  .upload-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--pale);
+    opacity: 0.7;
+    font-size: 15px;
+  }
+
+  .upload-sub {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    color: rgba(201,168,76,0.5);
+    margin-top: 6px;
+  }
+
+  #upload-preview {
+    margin-top: 12px;
+    display: none;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    background: rgba(201,168,76,0.08);
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 2px;
+  }
+
+  #upload-preview img {
+    width: 44px;
+    height: 44px;
+    object-fit: cover;
+    border-radius: 2px;
+    border: 1px solid rgba(201,168,76,0.3);
+  }
+
+  #upload-preview span {
+    font-size: 13px;
+    color: var(--pale);
+    font-style: italic;
+  }
+
+  /* Spacer between sections */
+  .section-gap { margin-top: 36px; }
+
+  /* Submit button */
+  .submit-btn {
+    width: 100%;
+    padding: 18px 32px;
+    background: linear-gradient(135deg, #1a0e00 0%, #2a1800 50%, #1a0e00 100%);
+    border: 1px solid var(--gold);
+    border-radius: 2px;
+    color: var(--gold-light);
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 13px;
+    letter-spacing: 0.2em;
+    cursor: pointer;
+    margin-top: 40px;
+    transition: all 0.4s;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .submit-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(201,168,76,0.15), rgba(201,168,76,0.05));
+    opacity: 0;
+    transition: opacity 0.4s;
+  }
+
+  .submit-btn:hover::before { opacity: 1; }
+
+  .submit-btn:hover {
+    box-shadow: 0 0 40px rgba(201,168,76,0.2), 0 0 80px rgba(201,168,76,0.05);
+    letter-spacing: 0.25em;
+  }
+
+  .submit-btn:active { transform: scale(0.99); }
+
+  .wa-icon {
+    font-size: 18px;
+  }
+
+  /* Footer note */
+  .footer-note {
+    text-align: center;
+    margin-top: 24px;
+    font-style: italic;
+    font-size: 14px;
+    color: rgba(212,201,181,0.4);
+    animation: fadeIn 1.5s ease 0.5s both;
+  }
+
+  .footer-note a {
+    color: rgba(201,168,76,0.6);
+    text-decoration: none;
+  }
+
+  footer {
+    text-align: center;
+    padding: 40px 0 20px;
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.3em;
+    color: rgba(201,168,76,0.3);
+    text-transform: uppercase;
+  }
+
+  /* Animations */
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(60px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Floating ink drops bg */
+  .ink-bg {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+  }
+
+  .ink-drop {
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(139,26,26,0.06) 0%, transparent 70%);
+    animation: pulse 8s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 0.5; }
+    50% { transform: scale(1.3); opacity: 1; }
+  }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    .container { padding: 0 16px 60px; }
+
+    header { padding: 40px 0 32px; }
+
+    .studio-name { font-size: clamp(22px, 8vw, 36px); }
+    .tagline { font-size: 14px; letter-spacing: 0.08em; }
+
+    .divider { margin: 20px 0; }
+    .divider-text { font-size: 9px; letter-spacing: 0.2em; }
+
+    .form-card { padding: 28px 18px; }
+
+    .form-section-title { font-size: 9px; letter-spacing: 0.2em; margin-bottom: 20px; }
+
+    .field-group { grid-template-columns: 1fr; gap: 16px; }
+
+    input, select, textarea { font-size: 15px; padding: 11px 13px; }
+
+    .size-options { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .size-option label { padding: 10px 6px; gap: 4px; }
+    .size-option label .size-icon { font-size: 18px; }
+    .size-option label .size-label { font-size: 8px; }
+    .size-option label .size-sub { font-size: 10px; }
+
+    .upload-area { padding: 22px 14px; }
+    .upload-icon { font-size: 22px; }
+    .upload-text { font-size: 13px; }
+
+    .submit-btn { font-size: 11px; padding: 15px 20px; letter-spacing: 0.12em; margin-top: 28px; }
+    .submit-btn:hover { letter-spacing: 0.14em; }
+
+    .section-gap { margin-top: 24px; }
+
+    /* Modal responsive */
+    .modal-overlay { padding: 0; align-items: flex-end; }
+
+    .modal-box {
+      padding: 28px 20px 32px;
+      max-width: 100%;
+      width: 100%;
+      border-radius: 12px 12px 0 0;
+      max-height: 88vh;
+      overflow-y: auto;
+      animation: slideUp 0.35s cubic-bezier(0.32, 0.72, 0, 1);
+    }
+
+    .modal-icon { font-size: 32px; margin-bottom: 10px; }
+    .modal-title { font-size: 13px; }
+    .modal-body { font-size: 15px; margin-bottom: 14px; }
+    .modal-reminder { font-size: 9px; padding: 12px 14px; margin-bottom: 18px; line-height: 1.9; }
+    .modal-img-preview { width: 60px; height: 60px; margin-bottom: 12px; }
+
+    .btn-primary { font-size: 10px; padding: 13px 18px; letter-spacing: 0.1em; }
+    .btn-secondary { font-size: 8px; padding: 11px 18px; }
+  }
+
+  @media (max-width: 380px) {
+    .studio-name { font-size: 20px; }
+    .size-options { gap: 6px; }
+    .size-option label { padding: 8px 4px; }
+    .size-option label .size-sub { display: none; }
+    .form-card { padding: 22px 14px; }
+  }
+
+  /* Error state */
+  .field input.error, .field select.error, .field textarea.error {
+    border-color: rgba(139,26,26,0.8);
+    box-shadow: 0 0 0 3px rgba(139,26,26,0.1);
+  }
+
+  .error-msg {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    color: #c04040;
+    letter-spacing: 0.1em;
+    margin-top: 2px;
+    display: none;
+  }
+
+  .field.has-error .error-msg { display: block; }
+  .field.has-error input, .field.has-error select, .field.has-error textarea {
+    border-color: rgba(139,26,26,0.8);
+  }
+
+  /* UPLOAD STATUS */
+  .upload-status {
+    display: none;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+    padding: 10px 14px;
+    border-radius: 2px;
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+  }
+
+  .upload-status.uploading {
+    display: flex;
+    background: rgba(201,168,76,0.08);
+    border: 1px solid rgba(201,168,76,0.2);
+    color: var(--gold);
+  }
+
+  .upload-status.success {
+    display: flex;
+    background: rgba(20,80,20,0.2);
+    border: 1px solid rgba(80,160,80,0.3);
+    color: #7ec87e;
+  }
+
+  .upload-status.error {
+    display: flex;
+    background: rgba(139,26,26,0.15);
+    border: 1px solid rgba(139,26,26,0.3);
+    color: #c07070;
+  }
+
+  .spin {
+    display: inline-block;
+    animation: spin 1s linear infinite;
+  }
+
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* MODAL OVERLAY */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.85);
+    z-index: 100;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    backdrop-filter: blur(4px);
+    animation: fadeIn 0.3s ease;
+    overflow-y: auto;
+  }
+
+  .modal-overlay.show { display: flex; }
+
+  .modal-box {
+    background: linear-gradient(145deg, var(--ash), var(--smoke));
+    border: 1px solid rgba(201,168,76,0.35);
+    border-radius: 2px;
+    padding: 40px 36px;
+    max-width: 460px;
+    width: 100%;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 0 80px rgba(0,0,0,0.8), 0 0 40px rgba(201,168,76,0.05);
+    animation: fadeUp 0.4s ease;
+  }
+
+  .modal-box::before, .modal-box::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-color: var(--gold);
+    border-style: solid;
+    opacity: 0.5;
+  }
+
+  .modal-box::before { top: -1px; left: -1px; border-width: 2px 0 0 2px; }
+  .modal-box::after  { bottom: -1px; right: -1px; border-width: 0 2px 2px 0; }
+
+  .modal-icon { font-size: 44px; margin-bottom: 16px; line-height: 1; }
+
+  .modal-title {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 15px;
+    color: var(--gold-light);
+    letter-spacing: 0.1em;
+    margin-bottom: 12px;
+  }
+
+  .modal-body {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    color: var(--pale);
+    line-height: 1.7;
+    margin-bottom: 20px;
+  }
+
+  .modal-reminder {
+    background: rgba(201,168,76,0.08);
+    border: 1px solid rgba(201,168,76,0.25);
+    border-radius: 2px;
+    padding: 14px 18px;
+    margin-bottom: 28px;
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    color: var(--gold);
+    line-height: 1.8;
+    text-align: left;
+  }
+
+  .modal-reminder strong {
+    display: block;
+    margin-bottom: 6px;
+    color: var(--gold-light);
+    font-size: 11px;
+  }
+
+  .modal-img-preview {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 2px;
+    border: 1px solid rgba(201,168,76,0.3);
+    margin: 0 auto 16px;
+    display: none;
+  }
+
+  .modal-btns {
+    display: flex;
+    gap: 12px;
+    flex-direction: column;
+  }
+
+  .btn-primary {
+    padding: 14px 24px;
+    background: linear-gradient(135deg, #1a3a1a, #224422);
+    border: 1px solid rgba(80,160,80,0.5);
+    border-radius: 2px;
+    color: #7ec87e;
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+
+  .btn-primary:hover {
+    background: linear-gradient(135deg, #224422, #2a5522);
+    box-shadow: 0 0 20px rgba(80,160,80,0.15);
+  }
+
+  .btn-secondary {
+    padding: 12px 24px;
+    background: transparent;
+    border: 1px solid rgba(201,168,76,0.25);
+    border-radius: 2px;
+    color: rgba(201,168,76,0.6);
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-transform: uppercase;
+  }
+
+  .btn-secondary:hover { border-color: rgba(201,168,76,0.5); color: var(--gold); }
+</style>
+</head>
+<body>
+
+<div class="ink-bg">
+  <div class="ink-drop" style="width:600px;height:600px;top:-200px;left:-200px;animation-delay:0s;"></div>
+  <div class="ink-drop" style="width:400px;height:400px;bottom:-100px;right:-100px;animation-delay:4s;"></div>
+</div>
+
+<div class="container">
+
+  <header>
+    <div class="header-ornament">
+      <div class="ornament-line"></div>
+      <div class="ornament-diamond"></div>
+      <div class="ornament-line"></div>
+    </div>
+    <div class="studio-name">MotherSkin<br>Tattoos</div>
+    <div class="tagline">Ink that speaks your story</div>
+  </header>
+
+  <div class="divider">
+    <div class="divider-line"></div>
+    <div class="divider-text">Appointment Request</div>
+    <div class="divider-line"></div>
+  </div>
+
+  <div class="form-card">
+
+    <!-- Personal Info -->
+    <div class="form-section-title">Your Details</div>
+
+    <div class="field-group">
+      <div class="field" id="field-name">
+        <label>Full Name <span class="req">*</span></label>
+        <input type="text" id="name" placeholder="Your name" />
+        <div class="error-msg">Name is required</div>
+      </div>
+      <div class="field" id="field-phone">
+        <label>Phone Number <span class="req">*</span></label>
+        <input type="tel" id="phone" placeholder="+91 XXXXX XXXXX" />
+        <div class="error-msg">Valid phone required</div>
+      </div>
+    </div>
+
+    <!-- Tattoo Details -->
+    <div class="section-gap">
+      <div class="form-section-title">Tattoo Details</div>
+    </div>
+
+    <div class="field" style="margin-bottom:20px;" id="field-size">
+      <label>Size <span class="req">*</span></label>
+      <div class="size-options">
+        <div class="size-option">
+          <input type="radio" name="size" id="size-small" value="Small (2–4 inches)">
+          <label for="size-small">
+            <span class="size-icon">🔹</span>
+            <span class="size-label">Small</span>
+            <span class="size-sub">2–4 inches</span>
+          </label>
+        </div>
+        <div class="size-option">
+          <input type="radio" name="size" id="size-medium" value="Medium (4–8 inches)">
+          <label for="size-medium">
+            <span class="size-icon">🔷</span>
+            <span class="size-label">Medium</span>
+            <span class="size-sub">4–8 inches</span>
+          </label>
+        </div>
+        <div class="size-option">
+          <input type="radio" name="size" id="size-large" value="Large (8+ inches)">
+          <label for="size-large">
+            <span class="size-icon">⬛</span>
+            <span class="size-label">Large</span>
+            <span class="size-sub">8+ inches</span>
+          </label>
+        </div>
+      </div>
+      <div class="error-msg" style="display:none" id="size-error">Please select a size</div>
+    </div>
+
+    <div class="field-group" style="margin-bottom:20px;">
+      <div class="field" id="field-placement">
+        <label>Placement <span class="req">*</span></label>
+        <select id="placement">
+          <option value="" disabled selected>Choose placement...</option>
+          <optgroup label="Arms">
+            <option>Inner Forearm</option>
+            <option>Outer Forearm</option>
+            <option>Bicep</option>
+            <option>Upper Arm / Sleeve</option>
+            <option>Wrist</option>
+            <option>Hand / Fingers</option>
+          </optgroup>
+          <optgroup label="Torso">
+            <option>Chest</option>
+            <option>Ribs / Side</option>
+            <option>Sternum</option>
+            <option>Stomach</option>
+            <option>Back (Upper)</option>
+            <option>Back (Lower)</option>
+            <option>Full Back</option>
+          </optgroup>
+          <optgroup label="Legs">
+            <option>Thigh</option>
+            <option>Calf</option>
+            <option>Ankle</option>
+            <option>Foot</option>
+          </optgroup>
+          <optgroup label="Other">
+            <option>Neck</option>
+            <option>Behind Ear</option>
+            <option>Shoulder / Collarbone</option>
+            <option>Face</option>
+          </optgroup>
+        </select>
+        <div class="error-msg">Please select placement</div>
+      </div>
+      <div class="field">
+        <label>Preferred Date</label>
+        <input type="date" id="date" />
+      </div>
+    </div>
+
+    <!-- Reference Image -->
+    <div class="field" style="margin-bottom:20px;">
+      <label>Reference Image</label>
+      <input type="file" id="ref-image" accept="image/*" style="display:none" onchange="handleUpload(this)">
+      <div class="upload-area" id="upload-area" onclick="document.getElementById('ref-image').click()">
+        <div class="upload-icon">🖼️</div>
+        <div class="upload-text">Tap to choose your reference image</div>
+        <div class="upload-sub">JPG / PNG / WEBP — Max 10MB</div>
+      </div>
+      <div id="upload-preview">
+        <img id="preview-img" src="" alt="preview">
+        <span id="preview-name"></span>
+      </div>
+      <div class="upload-status" id="upload-status">
+        <span id="upload-status-icon"></span>
+        <span id="upload-status-text"></span>
+      </div>
+    </div>
+
+    <!-- Notes -->
+    <div class="field" style="margin-bottom:0">
+      <label>Additional Notes</label>
+      <textarea id="notes" placeholder="Describe your design idea, style preferences, colour choices, or anything else we should know..."></textarea>
+    </div>
+
+    <button class="submit-btn" onclick="sendToWhatsApp()">
+      <span class="wa-icon">💬</span>
+      Send Request on WhatsApp
+    </button>
+
+  </div>
+
+  <p class="footer-note">Your details go directly to the studio — no waiting, no repeated questions.</p>
+
+  <footer>© 2026 MotherSkin Tattoos &nbsp;·&nbsp; Bhopal, India</footer>
+
+</div>
+
+<!-- POST-SUBMIT MODAL -->
+<div class="modal-overlay" id="modal">
+  <div class="modal-box">
+    <div class="modal-icon">✅</div>
+    <div class="modal-title">Almost Done!</div>
+    <img class="modal-img-preview" id="modal-img" src="" alt="your reference">
+    <div class="modal-body">
+      WhatsApp is opening with your full request.<br>
+      <strong style="color:var(--gold-light)">One last step:</strong>
+    </div>
+    <div class="modal-reminder">
+      <strong>📎 Attach your reference image manually</strong>
+      Open the <strong>attachment (📎)</strong> icon in WhatsApp<br>
+      → Select <strong>Gallery / Photos</strong><br>
+      → Choose your reference image<br>
+      → Hit <strong>Send</strong> 🚀
+    </div>
+    <div id="modal-link-row" style="display:none; margin-bottom:20px;">
+      <div style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.15em;color:var(--gold);margin-bottom:8px;">OR — IMAGE UPLOADED ONLINE</div>
+      <a id="modal-img-link" href="#" target="_blank" style="font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--gold-light);font-size:15px;word-break:break-all;">View uploaded image →</a>
+    </div>
+    <div class="modal-btns">
+      <button class="btn-primary" onclick="openWhatsApp()">📲 Open WhatsApp Now</button>
+      <button class="btn-secondary" onclick="closeModal()">← Back to Form</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  let uploadedImageUrl = null;
+  let whatsAppUrl = null;
+
+  function handleUpload(input) {
+    const file = input.files[0];
+    if (!file) return;
+
+    // Show local preview
+    const preview = document.getElementById('upload-preview');
+    const img = document.getElementById('preview-img');
+    const nameEl = document.getElementById('preview-name');
+    const reader = new FileReader();
+    reader.onload = e => {
+      img.src = e.target.result;
+      nameEl.textContent = file.name;
+      preview.style.display = 'flex';
+    };
+    reader.readAsDataURL(file);
+
+    // Update upload area to show selected state
+    const area = document.getElementById('upload-area');
+    area.innerHTML = `
+      <div class="upload-icon">✅</div>
+      <div class="upload-text" style="color:var(--gold-light)">${file.name}</div>
+      <div class="upload-sub" style="margin-top:6px;color:rgba(201,168,76,0.5)">Tap to change image</div>
+    `;
+
+    // Upload to Cloudinary
+    uploadToCloudinary(file);
+  }
+
+  async function uploadToCloudinary(file) {
+    const status = document.getElementById('upload-status');
+    const statusIcon = document.getElementById('upload-status-icon');
+    const statusText = document.getElementById('upload-status-text');
+
+    status.className = 'upload-status uploading';
+    statusIcon.innerHTML = '<span class="spin">⏳</span>';
+    statusText.textContent = 'Uploading image...';
+
+    try {
+      const formData = new FormData();
+      formData.append('file', file);
+      formData.append('upload_preset', 'dewkors1');
+
+      const res = await fetch('https://api.cloudinary.com/v1_1/dy1njtai9/image/upload', {
+        method: 'POST',
+        body: formData
+      });
+
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      const data = await res.json();
+
+      if (data && data.secure_url) {
+        uploadedImageUrl = data.secure_url;
+        status.className = 'upload-status success';
+        statusIcon.textContent = '✅';
+        statusText.textContent = 'Image uploaded — link will be included!';
+      } else {
+        throw new Error('No URL returned');
+      }
+    } catch (err) {
+      uploadedImageUrl = null;
+      status.className = 'upload-status error';
+      statusIcon.textContent = '⚠️';
+      statusText.textContent = 'Upload failed — attach manually on WhatsApp.';
+    }
+  }
+
+  function validate() {
+    let valid = true;
+
+    const fields = [
+      { id: 'name', wrapper: 'field-name', check: v => v.trim().length > 1 },
+      { id: 'phone', wrapper: 'field-phone', check: v => /^[0-9+\s\-]{7,15}$/.test(v.trim()) },
+      { id: 'placement', wrapper: 'field-placement', check: v => v !== '' },
+    ];
+
+    fields.forEach(f => {
+      const el = document.getElementById(f.id);
+      const wrapper = document.getElementById(f.wrapper);
+      if (!f.check(el.value)) {
+        wrapper.classList.add('has-error');
+        valid = false;
+      } else {
+        wrapper.classList.remove('has-error');
+      }
+    });
+
+    const sizeChecked = document.querySelector('input[name="size"]:checked');
+    const sizeErr = document.getElementById('size-error');
+    if (!sizeChecked) {
+      sizeErr.style.display = 'block';
+      valid = false;
+    } else {
+      sizeErr.style.display = 'none';
+    }
+
+    return valid;
+  }
+
+  function buildWhatsAppUrl() {
+    const name = document.getElementById('name').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const size = document.querySelector('input[name="size"]:checked')?.value || 'Not selected';
+    const placement = document.getElementById('placement').value || 'Not selected';
+    const rawDate = document.getElementById('date').value;
+    let date = 'Flexible';
+    if (rawDate) {
+      const d = new Date(rawDate + 'T00:00:00');
+      date = d.toLocaleDateString('en-IN', { weekday: 'short', day: 'numeric', month: 'long', year: 'numeric' });
+    }
+    const notes = document.getElementById('notes').value.trim() || 'None';
+    const imageFile = document.getElementById('ref-image').files[0];
+    const imageLine = uploadedImageUrl
+      ? `🖼️ *Reference Image:* ${uploadedImageUrl}`
+      : imageFile
+        ? `🖼️ *Reference Image:* ${imageFile.name} _(attach manually)_`
+        : `🖼️ *Reference Image:* None`;
+
+    const msg = `🖋️ *New Tattoo Request — MotherSkin Tattoos*
+
+👤 *Name:* ${name}
+📱 *Phone:* ${phone}
+
+✦ *Size:* ${size}
+📍 *Placement:* ${placement}
+📅 *Preferred Date:* ${date}
+${imageLine}
+📝 *Notes:* ${notes}
+
+_Sent via MotherSkin Booking Form_`;
+
+    const encoded = encodeURIComponent(msg);
+    return `https://wa.me/919165551818?text=${encoded}`;
+  }
+
+  function sendToWhatsApp() {
+    if (!validate()) return;
+
+    // Build URL and store it
+    whatsAppUrl = buildWhatsAppUrl();
+
+    // Populate modal
+    const previewImg = document.getElementById('preview-img');
+    const modalImg = document.getElementById('modal-img');
+    const imageFile = document.getElementById('ref-image').files[0];
+
+    if (imageFile) {
+      modalImg.src = previewImg.src;
+      modalImg.style.display = 'block';
+    }
+
+    if (uploadedImageUrl) {
+      const linkRow = document.getElementById('modal-link-row');
+      const link = document.getElementById('modal-img-link');
+      linkRow.style.display = 'block';
+      link.href = uploadedImageUrl;
+      link.textContent = uploadedImageUrl.length > 50 ? uploadedImageUrl.substring(0, 50) + '…' : uploadedImageUrl;
+    }
+
+    document.getElementById('modal').classList.add('show');
+  }
+
+  function openWhatsApp() {
+    if (whatsAppUrl) window.open(whatsAppUrl, '_blank');
+  }
+
+  function closeModal() {
+    document.getElementById('modal').classList.remove('show');
+  }
+
+  // Close on overlay click
+  document.getElementById('modal').addEventListener('click', function(e) {
+    if (e.target === this) closeModal();
+  });
+
+  // Auto-set min date to today
+  const dateInput = document.getElementById('date');
+  const today = new Date().toISOString().split('T')[0];
+  dateInput.min = today;
+</script>
+</body>
+</html>
